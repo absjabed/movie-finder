@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,6 +16,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Section = ()=> {
@@ -38,6 +39,11 @@ const Section = ()=> {
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, [])
+  
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -67,6 +73,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    fontFamily:'Ubuntu-Bold'
   },
   sectionDescription: {
     marginTop: 8,
