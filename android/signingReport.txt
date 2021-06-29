@@ -1,6 +1,9 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Task :app:signingReport
 Variant: debug
 Config: debug
-Store: F:\react-native-rnd\MovieFinder\android\app\debug.keystore
+Store: /media/absjabed/lnxpart/reactNattive/movie-finder/android/app/debug.keystore
 Alias: androiddebugkey
 MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
 SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
@@ -9,7 +12,7 @@ Valid until: Wednesday, May 1, 2052
 ----------
 Variant: release
 Config: debug
-Store: F:\react-native-rnd\MovieFinder\android\app\debug.keystore
+Store: /media/absjabed/lnxpart/reactNattive/movie-finder/android/app/debug.keystore
 Alias: androiddebugkey
 MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
 SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
@@ -18,7 +21,7 @@ Valid until: Wednesday, May 1, 2052
 ----------
 Variant: debugAndroidTest
 Config: debug
-Store: F:\react-native-rnd\MovieFinder\android\app\debug.keystore
+Store: /media/absjabed/lnxpart/reactNattive/movie-finder/android/app/debug.keystore
 Alias: androiddebugkey
 MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
 SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
@@ -27,7 +30,7 @@ Valid until: Wednesday, May 1, 2052
 ----------
 Variant: debugUnitTest
 Config: debug
-Store: F:\react-native-rnd\MovieFinder\android\app\debug.keystore
+Store: /media/absjabed/lnxpart/reactNattive/movie-finder/android/app/debug.keystore
 Alias: androiddebugkey
 MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
 SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
@@ -36,7 +39,7 @@ Valid until: Wednesday, May 1, 2052
 ----------
 Variant: releaseUnitTest
 Config: debug
-Store: F:\react-native-rnd\MovieFinder\android\app\debug.keystore
+Store: /media/absjabed/lnxpart/reactNattive/movie-finder/android/app/debug.keystore
 Alias: androiddebugkey
 MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
 SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
@@ -47,28 +50,28 @@ Valid until: Wednesday, May 1, 2052
 > Task :react-native-splash-screen:signingReport
 Variant: debugAndroidTest
 Config: debug
-Store: C:\Users\absjabed\.android\debug.keystore
+Store: /home/absjabed/.android/debug.keystore
 Alias: AndroidDebugKey
-MD5: 44:B1:80:35:77:F2:0C:AA:D8:53:8E:AB:3C:66:B3:76
-SHA1: 08:C8:C3:BE:90:14:67:22:5A:B1:04:4F:7A:23:E0:13:A6:D2:7D:05
-SHA-256: 62:E2:74:FC:F1:8A:C8:F9:2B:EB:8A:FB:B0:EC:BB:E6:EA:72:5F:66:94:1D:E3:54:61:20:FE:D0:37:FE:7F:BA
-Valid until: Tuesday, November 24, 2048
+MD5: A3:CC:7D:C1:74:1E:18:5B:B4:7B:6F:70:DE:D3:37:1D
+SHA1: 9D:FA:C4:30:50:44:52:85:25:D4:5A:DA:F6:C8:50:FE:65:4F:ED:50
+SHA-256: F1:2A:2A:1B:BA:0D:8C:37:D8:0E:91:46:6F:E4:FA:5D:78:68:35:B1:94:C2:2E:7C:CC:A1:9D:57:79:10:A4:4B
+Valid until: Friday, March 10, 2051
 ----------
 Variant: debugUnitTest
 Config: debug
-Store: C:\Users\absjabed\.android\debug.keystore
+Store: /home/absjabed/.android/debug.keystore
 Alias: AndroidDebugKey
-MD5: 44:B1:80:35:77:F2:0C:AA:D8:53:8E:AB:3C:66:B3:76
-SHA1: 08:C8:C3:BE:90:14:67:22:5A:B1:04:4F:7A:23:E0:13:A6:D2:7D:05
-SHA-256: 62:E2:74:FC:F1:8A:C8:F9:2B:EB:8A:FB:B0:EC:BB:E6:EA:72:5F:66:94:1D:E3:54:61:20:FE:D0:37:FE:7F:BA
-Valid until: Tuesday, November 24, 2048
+MD5: A3:CC:7D:C1:74:1E:18:5B:B4:7B:6F:70:DE:D3:37:1D
+SHA1: 9D:FA:C4:30:50:44:52:85:25:D4:5A:DA:F6:C8:50:FE:65:4F:ED:50
+SHA-256: F1:2A:2A:1B:BA:0D:8C:37:D8:0E:91:46:6F:E4:FA:5D:78:68:35:B1:94:C2:2E:7C:CC:A1:9D:57:79:10:A4:4B
+Valid until: Friday, March 10, 2051
 ----------
 Variant: releaseUnitTest
 Config: debug
-Store: C:\Users\absjabed\.android\debug.keystore
+Store: /home/absjabed/.android/debug.keystore
 Alias: AndroidDebugKey
-MD5: 44:B1:80:35:77:F2:0C:AA:D8:53:8E:AB:3C:66:B3:76
-SHA1: 08:C8:C3:BE:90:14:67:22:5A:B1:04:4F:7A:23:E0:13:A6:D2:7D:05
-SHA-256: 62:E2:74:FC:F1:8A:C8:F9:2B:EB:8A:FB:B0:EC:BB:E6:EA:72:5F:66:94:1D:E3:54:61:20:FE:D0:37:FE:7F:BA
-Valid until: Tuesday, November 24, 2048
+MD5: A3:CC:7D:C1:74:1E:18:5B:B4:7B:6F:70:DE:D3:37:1D
+SHA1: 9D:FA:C4:30:50:44:52:85:25:D4:5A:DA:F6:C8:50:FE:65:4F:ED:50
+SHA-256: F1:2A:2A:1B:BA:0D:8C:37:D8:0E:91:46:6F:E4:FA:5D:78:68:35:B1:94:C2:2E:7C:CC:A1:9D:57:79:10:A4:4B
+Valid until: Friday, March 10, 2051
 ----------

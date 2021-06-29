@@ -1,88 +1,48 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React, { useEffect } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import Authentication from './src/app/screens/Authentication';
 import SplashScreen from 'react-native-splash-screen';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Authenticated from './src/app/screens/Authenticated';
 
-const Section = ()=> {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-          This is a tExt
-      </Text>
-    </View>
-  );
-};
-
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
+export const App = () => {
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     SplashScreen.hide();
-  }, [])
-  
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+    GoogleSignin.configure({
+      webClientId:
+        '840761338214-o2qpgivad4gfthuct8emacf4hmiatqeg.apps.googleusercontent.com',
+    });
+  }, []);
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar hidden barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section/>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+    console.log('idtkn',idToken);
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    fontFamily:'Ubuntu-Bold'
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    console.log('cred',googleCredential);
+
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
+
+  auth().onAuthStateChanged((user) => {
+    if (user) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+    }
+  });
+
+  if (authenticated) {
+    return <Authenticated />;
+  }
+
+  return <Authentication onGoogleButtonPress={onGoogleButtonPress} />;
+}
+
 
 export default App;
