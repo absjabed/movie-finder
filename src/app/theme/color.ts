@@ -15,6 +15,13 @@ const color = {
     darkBackground: '#121212',
     darkSurface: '#1d1d1d',
     darkCard: '#1d1d1d',
+
+    //app theme color
+    redish: "#F05454",
+    navy: "#151965",
+    navyFade: "#32407B",
+    navyWhitish:"#515585",
+    tealFade:"#46B5D1"
 }
 
 export default color;

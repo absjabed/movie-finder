@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import Container from '../components/Container';
+import color from '../theme/color';
+import { typography } from '../theme/typography';
 
 const Home = (props : any) => {
     const user = auth().currentUser;
@@ -36,10 +38,13 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: color.navyFade
     },
     title: {
       fontSize: 25,
       marginBottom: 30,
+      color: color.white,
+      fontFamily: typography.ubuntuRegular
     },
     image: {
       height: 150,

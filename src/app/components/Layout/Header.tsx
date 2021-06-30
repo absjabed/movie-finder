@@ -1,8 +1,10 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View, Pressable} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import Icon from 'react-native-vector-icons/Entypo'
 import Colors from '../../theme/color';
 import { typography } from '../../theme/typography';
+import color from '../../theme/color';
 const Header = (props: any) => {
   const user = auth().currentUser;
 
@@ -16,7 +18,7 @@ const Header = (props: any) => {
               <Text style={styles.infotext}>{user?.displayName}</Text>
             </View>
             <Pressable onPress={() => auth().signOut()} style={{flexDirection: 'row', justifyContent:'space-between', position:'absolute', right: 0}}>
-                <Image source={{uri: user?.photoURL+""}} style={styles.logout} />
+                <Icon name="log-out" size={25} color={color.redish} />
             </Pressable>
       </View>
     </View>
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderBottomColor: Colors.lightGray,
     borderBottomWidth: 0.5,
-    backgroundColor: Colors.darkTitleBackground,
+    backgroundColor: Colors.navy,
   },
   container: {
     width: '100%',
