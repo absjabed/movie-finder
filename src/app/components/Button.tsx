@@ -12,7 +12,7 @@ const AppButton = (props: any) => {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.redish,
     borderRadius: 7,
     color: Colors.white,
     padding: 10,
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.white,
-    //fontWeight: 'bold',
     fontFamily: typography.ubuntuBold
   },
 });

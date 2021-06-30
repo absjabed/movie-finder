@@ -7,14 +7,12 @@ import Authentication from './src/app/screens/Authentication';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import * as constKVP from './src/app/utils/constKVP'
-import ProgressDialog from './src/app/utils/loader'
 import AppNavigations from './src/app/navigations/AppNavigations';
 import Layout from './src/app/components/Layout/Layout';
 import Header from './src/app/components/Layout/Header';
 
 export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
     SplashScreen.hide();
@@ -25,7 +23,6 @@ export const App = () => {
   }, []);
 
   async function onGoogleButtonPress() {
-    setisLoading(true);
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
     //console.log('idtkn',idToken);
@@ -45,12 +42,10 @@ export const App = () => {
     } else {
       setAuthenticated(false);
     }
-    setisLoading(false);
   });
 
   if (authenticated) {
     return (<NavigationContainer>
-              <ProgressDialog loading={isLoading} />
               <Layout>
                 <Header headerTxt="Movie Finder"/>
                 <AppNavigations/>
