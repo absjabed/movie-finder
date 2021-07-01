@@ -12,7 +12,7 @@ const AppTextInput = (props: any) => {
         underlineColorAndroid={Colors.transparent}
         secureTextEntry={props.secureTextEntry}
         placeholder={props.placeholder}
-        placeholderTextColor= {Colors.placeholderColor}
+        placeholderTextColor= {Colors.lightGray}
         keyboardType={props.keyboardType}
         onChangeText={props.onChangeText}
         textAlign="left"
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginTop: 10,
-    borderColor: Colors.lightGray,
+    borderColor: Colors.white,
     borderRadius: 7,
     borderWidth: 1,
     height: 40

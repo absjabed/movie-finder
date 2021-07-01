@@ -18,6 +18,7 @@ const color = {
 
     //app theme color
     redish: "#F05454",
+    red: "red",
     navy: "#151965",
     navyFade: "#32407B",
     navyWhitish:"#515585",
