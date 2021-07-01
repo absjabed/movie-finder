@@ -27,6 +27,7 @@ const AppTextInput = (props: any) => {
         style={styles.txtInput}
         editable={props.editable}
         value={props.value}
+        clearButtonMode={'unless-editing'}
       />
     </View>
   );

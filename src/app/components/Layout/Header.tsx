@@ -4,7 +4,6 @@ import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/Entypo'
 import Colors from '../../theme/color';
 import { typography } from '../../theme/typography';
-import color from '../../theme/color';
 const Header = (props: any) => {
   const user = auth().currentUser;
 
@@ -18,7 +17,7 @@ const Header = (props: any) => {
               <Text style={styles.infotext}>{user?.displayName}</Text>
             </View>
             <Pressable onPress={() => auth().signOut()} style={{flexDirection: 'row', justifyContent:'space-between', position:'absolute', right: 0}}>
-                <Icon name="log-out" size={25} color={color.redish} />
+                <Icon name="log-out" size={25} color={Colors.redish} />
             </Pressable>
       </View>
     </View>
@@ -57,14 +56,17 @@ const styles = StyleSheet.create({
   infotext: {
     fontSize: 12,
     color: Colors.white,
-    fontFamily: typography.ubuntuLight
+    fontFamily: typography.ubuntuLight,
+    letterSpacing: .5
+    
   },
   text: {
     flexDirection: 'row',
     fontSize: 16,
     color: Colors.white,
-    fontFamily:'Ubuntu-Regular',
+    fontFamily:typography.ubuntuBold,
     justifyContent: 'center',
+    letterSpacing: 1
   },
 });
 

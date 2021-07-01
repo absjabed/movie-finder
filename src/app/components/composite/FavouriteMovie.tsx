@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import { Rating } from 'react-native-ratings';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import Colors from '../../theme/color';
 import { typography } from '../../theme/typography';
 import AppText from '../Text';
@@ -9,11 +9,10 @@ import AppText from '../Text';
 type Props = {
     addOrRemove: (item: any) => void;
     movieItem: any;
-    favourited: boolean,
     index: number;
   };
 
-const MovieComponent = ({addOrRemove, index, movieItem, favourited}: Props) => {
+const FavouriteMovie = ({addOrRemove, index, movieItem}: Props) => {
   return (
     <View style={{ ...styles.cardShadow, ...styles.container}} key={index} >
         <View style={styles.cardInnerContainer}>
@@ -23,7 +22,7 @@ const MovieComponent = ({addOrRemove, index, movieItem, favourited}: Props) => {
                 <Image style={styles.image}  source={{uri:movieItem.Poster}} />
                 </View>) : <></>}
         <AppText style={styles.genre} >"{movieItem.Genre}"</AppText>
-            <Icon onPress={()=> addOrRemove(movieItem)} style={{position:'absolute', right:0, top: 0}} name={favourited ? "heart" : "heart-o"} size={20} color={Colors.red} />
+            <Icon onPress={()=> addOrRemove(movieItem)} style={{position:'absolute', right:0, top: 0}} name={"delete"} size={25} color={Colors.red} />
                 <AppText style={styles.released} >Rating : {movieItem.imdbRating}</AppText>
                 <Rating 
                     tintColor={Colors.navy}
@@ -41,7 +40,7 @@ const MovieComponent = ({addOrRemove, index, movieItem, favourited}: Props) => {
   );
 };
 
-export default MovieComponent;
+export default FavouriteMovie;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, StyleSheet, Text, View} from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import Container from '../components/Container';
-import color from '../theme/color';
+import Colors from '../theme/color';
 import ProgressDialog from '../utils/loader'
 import { typography } from '../theme/typography';
 import SearchComponent from '../components/composite/SearchComponent';
 import MovieComponent from '../components/composite/MovieComponent';
 import { get } from '../api/apiRequests';
 import showToastMessage from '../utils/showToast';
+import { GetAllFavouriteMovieIDs, storeMovieItem } from '../utils/asyncStorageUtils';
 
 const Home = (props : any) => {
     const [searchedWord, setsearchedWord] = useState("");
@@ -19,95 +20,100 @@ const Home = (props : any) => {
     ]
     );
     const [isLoading, setisLoading] = useState(false);
-    const [favouriteMovieIds, setfavouriteMovieIds] = useState(["tt0388980"]);
+    const [favouriteMovieIds, setfavouriteMovieIds] = useState([""]);
 
     useEffect(() => {
 
-        const unsubscribe = props.navigation.addListener('focus', () => {
-            
-            //if(mountedOnce)
-
+        const unsubscribe = props.navigation.addListener('focus', async () => {
+          
+            let allFavouriteMovieIDs = await GetAllFavouriteMovieIDs();
+            setfavouriteMovieIds(allFavouriteMovieIDs);
             console.log('Home Screen is focused');
             // The screen is focused
-            // Call any action
             //data loading from store
           });
           console.log("Home mounted..")
-          //setmountedOnce(true);
           // Return the function to unsubscribe from the event so it gets removed on unmount
           return unsubscribe;
    }, []);
+
    const initiateSearch = async () =>{ 
-        console.log("init search..");
+        //console.log("init search..");
         if(searchedWord.length == 0) return;
 
         setisLoading(true);
         await get(searchedWord)
-                    .then((response: any) => {
-
-              let resp = response.data;
-              //console.log(resp);
+              .then((response: any) => {
+              
+              /**Stop loading overley */
               setisLoading(false);
-              if(resp["Response"] === "True"){
-                  setMovies([resp]);
-                  showToastMessage('success', "bottom", "Hurrah!", "Found your movie! 👋", 1000);
+              let resp = response.data;
+              
+              /**checking if the response is a array or not */
+              if(!Array.isArray(resp)){
+                  if(resp["Response"] === "True"){
+                    /**Movie found */
+                    setMovies([resp]);
+                    showToastMessage('success', "bottom", "Hurrah!", "Found your movie! 👋", 1000);
+                  }else{
+                      /**No movie found */
+                      showToastMessage('error', "bottom", "Error!", resp["Error"]+"", 1000);
+                      setMovies([]);
+                  }
               }else{
-                  showToastMessage('error', "bottom", "Error!", resp["Error"]+"", 1000);
-                  setMovies([]);
+                /**If the response is an array then add favourited property to each movie */
+                setMovies(resp);
+                showToastMessage('success', "bottom", "Hurrah!", "Found your movie! 👋", 1000);
               }
-
+              
           })
           .catch(errorMessage => {   
               showToastMessage('error', "bottom", "Catch Error!", errorMessage, 1000); 
               setisLoading(false);
               setMovies([]);
           });
-
-        console.log(searchedWord);
    }
 
-   const onSearchWordChange=(word: string)=>{
-        setsearchedWord(word);
-  }
+  const addRemoveMoviesToFavourites = async (movieItem: any) =>{ 
 
-  const addToFavourites = (movieItem: any) =>{ 
-    if(favouriteMovieIds.findIndex(x => x === movieItem.imdbID) == -1){
-      favouriteMovieIds.push(movieItem.imdbID);
-    }else{
-      console.log('already exists');
-    }
-    console.log("addToFavourites", movieItem.imdbID);
+        /**Check if this movie is already in favourited movie list */
+        let index = favouriteMovieIds.findIndex(x => x === movieItem.imdbID);
+
+        if(index >= 0){
+          /**movie already exists so the movie will be removed */
+          favouriteMovieIds.splice(index, 1);
+        }else{
+          /**favourited movie added to the state*/
+          favouriteMovieIds.push(movieItem.imdbID);
+        }
+
+        /**Updating current state for the movie favourited or removal*/
+        setfavouriteMovieIds([...favouriteMovieIds]);
+
+        /** Store or remove the movie from local storage*/
+        await storeMovieItem(movieItem);
 }
-
-  /***815
-   * 7.22
-   *  Title
-ii. Genres [with comma separators]
-iii. Release dates
-iv. IMDB Rating
-v. Poster
-   * 
-   */
 
     return (
         <Container style={styles.screen}>
           <ProgressDialog loading={isLoading} />
           <View style={styles.searchContainer}>
-            <SearchComponent initiateSearch={initiateSearch} searchedWord={searchedWord} onSearchWordChange={(word)=>onSearchWordChange(word)} />
+            <SearchComponent initiateSearch={initiateSearch} searchedWord={searchedWord} onSearchWordChange={(word)=>setsearchedWord(word)} />
           </View>
           <View style={{flex:1, marginBottom: -20, zIndex: 3}}>
               <FlatList
                 data={movies}
-                renderItem={({ item, index }) => <MovieComponent favourited={(favouriteMovieIds.findIndex(x=> x === item.imdbID) != -1) ? true : false } addToFavourites={(item)=>addToFavourites(item)} movieItem={item} index={index} key={index} />}
+                renderItem={({ item, index }) => <MovieComponent favourited={(favouriteMovieIds.findIndex(x=> x === item.imdbID) >= 0) ? true : false } addOrRemove={(item)=>addRemoveMoviesToFavourites(item)} movieItem={item} index={index} key={index} />}
                 keyExtractor={(item, index) => `${index}`}
                 ListEmptyComponent={
-                                            <View style={{flexDirection:'row', paddingTop:'50%', justifyContent:'center', alignItems:'center'}}> 
-                                                <Text style={{fontSize: 18,  fontFamily:'Ubuntu-Bold', color: color.lightGray}} >No Info Available</Text>
-                                            </View>}
+                  <View style={styles.noInfo}> 
+                      <Image resizeMode="stretch" style={styles.nonimage} source={require('../../assets/images/app_init_android.png')} />
+                      <Text style={styles.noInfoTxt}>Found nothing for you. Give it another try.</Text>
+                  </View>}
                 contentContainerStyle={{padding: 10}} 
                 />
           </View>
-            {/* <Text style={styles.title}>You're Logged In</Text> */}
+          <Image resizeMode="stretch" style={styles.image} source={require('../../assets/images/scrwave.png')} />
         </Container>
     )
 }
@@ -117,7 +123,8 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: color.navyFade
+      backgroundColor: Colors.navyFade,
+      width: "100%"
     },
     searchContainer:{
       marginTop: -5
@@ -125,17 +132,42 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 25,
       marginBottom: 30,
-      color: color.white,
+      color: Colors.white,
       fontFamily: typography.ubuntuRegular
     },
     image: {
-      height: 150,
-      width: 150,
-      borderRadius: 150,
-      marginBottom: 20,
+      width: "120%",
+      bottom:0,
+      position:'absolute',
+      height: 100,
+      borderWidth: 1,
+      opacity: 1,
+      zIndex: -5, // works on ios
+      //elevation: 3, // works on android
+      alignSelf:'center',
     },
     text: {
       fontSize: 20,
+    },
+    noInfo:{
+      flex: 1,
+      flexDirection:'column', 
+      paddingTop:'50%', 
+      justifyContent:'center', 
+      alignItems:'center'
+    },
+    noInfoTxt: {
+      fontSize: 18,  
+      fontFamily:typography.ubuntuBold, 
+      color: Colors.lightGray,
+      textAlign: "center"
+    },
+    nonimage: {
+      width: 80,
+      height: 80,
+      borderRadius: 25,
+      opacity: .8,
+      margin: 5,
     },
   });
 

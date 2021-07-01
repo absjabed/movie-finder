@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { GoogleSigninButton } from '@react-native-community/google-signin';
-import color from '../theme/color';
+import Colors from '../theme/color';
 import { typography } from '../theme/typography';
 
 const Authentication = (props: any) => {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: color.navy
+    backgroundColor: Colors.navy
   },
   image: {
     height: 100,
@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
   },
   titleTxt:{
     fontSize: 25,
-    color: color.white,
+    color: Colors.white,
     fontFamily: typography.ubuntuBold,
     marginBottom: 30,
   },
   title: {
     fontSize: 18,
-    color: color.white,
+    color: Colors.white,
     fontFamily: typography.ubuntuRegular
   },
 });
