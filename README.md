@@ -1,20 +1,20 @@
-<div style="text-align:left"><img src="./screenshot/app_init_android.png" /></div>
+<div style="text-align:left"><img src="./screenshot/app_icon.png" /></div>
 
-# Dictionary Word Finder
+# Movie Info Finder
 
-This is a minimal dictionary application that allows users to search a variety of words. Users can search for words and if the word exist in the dictionary then the user will see the meaning and some grammatical details related to that word with available image. User can also save their favorite words which they can review later in the favorite tab. The words in the favorite tabs divided by the grammatical syntax's (verb, noun etc).
+This is a super simple movie searching application that allows users to search different movies. Movies info includes movie genre, release date, IMDB rating and etc. Beside search movies users can also save their favorite movies which they can be reviewed later in the favorite tab.
 
 #### Technologies Used
 
 - React Native
 - Typescript
-- Axios
-- Owl Bot API
-- Async Storage
-- Modular Component
+- Functional Component
 - Composite Component
-- Jest
-- React Test Renderer
+- React Hooks
+- React Navigation
+- Axios
+- OMDB Movie API
+- Async Storage
 - git
 
 
@@ -30,8 +30,8 @@ If you want to run the project please proceed with the following instructions,
   1. Setup React Native Environment ([Environment Setup Link](https://reactnative.dev/docs/environment-setup#development-os))
   2. Download the project,
      ```
-     git clone https://github.com/absjabed/favourite-words.git
-     cd favourite-words
+     git clone https://github.com/absjabed/movie-finder.git
+     cd movie-finder
      ```
   3. Install the dependencies,
      ```
@@ -75,16 +75,16 @@ If you have docker installed and have internet connect please follow the steps t
 
   1. Clone the project
      ```
-     git clone https://github.com/absjabed/favourite-words.git
-     cd favourite-words
+     git clone https://github.com/absjabed/movie-finder.git
+     cd movie-finder
      ```
   2. Run the following command to build the project,
      ```
      docker run -it --rm -v $PWD:/app -w /app reactnativecommunity/react-native-android /bin/bash -c "yarn install && cd /app/android && ./gradlew assembleRelease"
      ```
-  3. Find your apk file in the following location of your current directory (favourite-words)
+  3. Find your apk file in the following location of your current directory (movie-finder)
      ```
-     favourite-words/android/app/build/outputs/apk/release/apk-release.apk
+     movie-finder/android/app/build/outputs/apk/release/apk-release.apk
      ```
 
 ### Building the release apk (Manually)
@@ -92,8 +92,8 @@ If you want to build the release apk please proceed with the following instructi
   
   1. Download the project,
      ```
-     git clone https://github.com/absjabed/favourite-words.git
-     cd favourite-words
+     git clone https://github.com/absjabed/movie-finder.git
+     cd movie-finder
      ```
   2. To install the yarn dependencies,
      ```
@@ -119,7 +119,7 @@ If you want to build the release apk please proceed with the following instructi
      ```
   6. Finally, find the apk in the following locaiton,
      ```
-     favourite-words/android/app/build/outputs/apk/release/apk-release.apk
+     movie-finder/android/app/build/outputs/apk/release/apk-release.apk
      ```
   
 ---
@@ -127,17 +127,15 @@ If you want to build the release apk please proceed with the following instructi
 
 ## Application Demo
 ### Application Video
-To see a live demo please visit: [App-Video-Link](https://youtu.be/uTZxB6lVQ9w)
+To see a live demo please visit: [App-Video-Link]()
 
 ---
 
 ### App Screenshots (with usecases)
 Left             |  Right
 :-------------------------:|:-------------------------:
-<img src="./screenshot/Splash.png" />  |  <img src="./screenshot/1.arrow.png" />|
-<img src="./screenshot/2.Dutch.png" /> |  <img src="./screenshot/3.mirror.png" />  |
-<img src="./screenshot/4.Badger.png"/> | <img src="./screenshot/5.Spaniel.png" />|
-<img src="./screenshot/6.japan.png" /> | <img src="./screenshot/7.quick.png"  />|
-<img src="./screenshot/8.Flummoxed.png" /> | <img src="./screenshot/9.NotFound.png"  /> |
-<img src="./screenshot/adverb.png" /> | <img src="./screenshot/noun.png"  />|
+<img src="./screenshot/1.splash" />  |  <img src="./screenshot/2.login" />|
+<img src="./screenshot/3.userSelect" /> |  <img src="./screenshot/4.home" />  |
+<img src="./screenshot/5.favouriteEmpty"/> | <img src="./screenshot/6.favourited" />|
+<img src="./screenshot/7.search" /> |
 
