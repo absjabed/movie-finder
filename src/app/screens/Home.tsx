@@ -98,7 +98,7 @@ const Home = (props : any) => {
         <Container style={styles.screen}>
           <ProgressDialog loading={isLoading} />
           <View style={styles.searchContainer}>
-            <SearchComponent initiateSearch={initiateSearch} searchedWord={searchedWord} onSearchWordChange={(word)=>setsearchedWord(word)} />
+            <SearchComponent initiateSearch={()=> initiateSearch()} searchedWord={searchedWord} onSearchWordChange={(word)=>setsearchedWord(word)} />
           </View>
           <View style={{flex:1, marginBottom: -20, zIndex: 3}}>
               <FlatList
