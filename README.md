@@ -127,8 +127,8 @@ To see a live demo please visit: [App-Video-Link](https://youtu.be/0z0WoUoBL60)
 ### App Screenshots (with usecases)
 Left             |  Right
 :-------------------------:|:-------------------------:
-<img src="./screenshot/1.splash" />  |  <img src="./screenshot/2.login" />|
-<img src="./screenshot/3.userSelect" /> |  <img src="./screenshot/4.home" />  |
-<img src="./screenshot/5.favouriteEmpty"/> | <img src="./screenshot/6.favourited" />|
-<img src="./screenshot/7.search" /> |
+<img src="./screenshot/1.splash.png" />  |  <img src="./screenshot/2.login.png" />|
+<img src="./screenshot/3.userSelect.png" /> |  <img src="./screenshot/4.home.png" />  |
+<img src="./screenshot/5.favouriteEmpty.png"/> | <img src="./screenshot/6.favourited.png" />|
+<img src="./screenshot/7.search.png" /> |
 
