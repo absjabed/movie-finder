@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderBottomColor: Colors.lightGray,
     borderBottomWidth: 0.5,
-    backgroundColor: Colors.navy,
+    backgroundColor: Colors.navyFade,
   },
   container: {
     width: '100%',

@@ -26,7 +26,7 @@ const MovieComponent = ({addOrRemove, index, movieItem, favourited}: Props) => {
             <Icon onPress={()=> addOrRemove(movieItem)} style={{position:'absolute', right:0, top: 0}} name={favourited ? "heart" : "heart-o"} size={20} color={Colors.red} />
                 <AppText style={styles.released} >Rating : {movieItem.imdbRating}</AppText>
                 <Rating 
-                    tintColor={Colors.navy}
+                    tintColor={Colors.navyFade}
                     readonly
                     type='custom'
                     imageSize={15} 
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1, 
     flexDirection:'row', 
-    backgroundColor: Colors.navy, 
+    backgroundColor: Colors.navyFade, 
     width: "100%",
     padding:10, 
     borderRadius:10, 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
 
     borderWidth:0.3,
     borderRadius:10,
-    borderColor: Colors.navyWhitish
+    borderColor: Colors.navy
   },
   image: {
     width: 250,

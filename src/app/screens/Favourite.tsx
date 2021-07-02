@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: Colors.navyFade
+      backgroundColor: Colors.navy
     },
     title: {
       fontSize: 25,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
       width: 80,
       height: 80,
       borderRadius: 25,
-      opacity: .8,
+      opacity: .9,
       margin: 5,
     },
   });
